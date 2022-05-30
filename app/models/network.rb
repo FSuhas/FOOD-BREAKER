@@ -1,5 +1,4 @@
 class Network < ApplicationRecord
   belongs_to :user
-
-  validates :name, presence: true, uniqueness: true
+  has_many :networkers, through: :networks_user, sources: :user
 end
