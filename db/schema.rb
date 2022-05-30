@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_30_132700) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_151042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_132700) do
     t.index ["user_id"], name: "index_networks_on_user_id"
   end
 
+  create_table "networks_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "network_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["network_id"], name: "index_networks_users_on_network_id"
+    t.index ["user_id"], name: "index_networks_users_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,4 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_132700) do
   add_foreign_key "bookings", "users"
   add_foreign_key "events", "users"
   add_foreign_key "networks", "users"
+  add_foreign_key "networks_users", "networks"
+  add_foreign_key "networks_users", "users"
 end
