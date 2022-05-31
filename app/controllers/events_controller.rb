@@ -10,7 +10,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new
+    @event = Event.new(params_create)
+    @event.user = current_user
     if @event.save
       redirect_to dashboard_path, notice: "You have create a new event"
     else
@@ -19,6 +20,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def params_create
+    params.require(:event).permit(:id, :title, :experience, :address, :description, :date, :language, :capacity)
+  end
 
   def event_params
     params.require(:events).permit(:id)
