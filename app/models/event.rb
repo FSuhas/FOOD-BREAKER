@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
+  has_many :bookings
 
   EXPERIENCE = ["Dinner", "Cooking Class", "Food Tour", "Brunch"]
   LANGUAGE = ["French", "English", "Spanish", "Portuguese"]
@@ -9,4 +10,8 @@ class Event < ApplicationRecord
   validates :language, inclusion: { in: LANGUAGE }
 
   has_many_attached :photos
+
+  def calcul_capacity
+    capacity - bookings.sum(&:nb_guest)
+  end
 end

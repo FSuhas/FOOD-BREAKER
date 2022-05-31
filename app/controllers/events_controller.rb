@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit]
 
   def show
-  @booking = Booking.find(params[:id])
+  @booking = Booking.new
   end
 
   def new

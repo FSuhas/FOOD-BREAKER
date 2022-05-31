@@ -10,6 +10,12 @@
 <br>
 <%= @event.language %>
 <br>
-<%= @event.capacity - @booking.nb_guest%>
+<%= @event.calcul_capacity %>
 <br>
-<%#= link_to 'Participate', event_bookings_path %>
+<%= simple_form_for [@event, @booking] do |f| %>
+<%= f.input :nb_guest,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Guest" }%>
+    <%= f.button :submit, "Add our guest" %>
+<% end %>
