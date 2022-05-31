@@ -62,14 +62,21 @@ sleep(1)
 
 puts "Event seed start..."
 
-pierreEvent = Event.create(title: 'frendly Parisian Dinner', type: 'Dinner', address: '17 boulevard clemenceau 35000 Rennes', description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", capacity: 10, user: pierre)
+pierreEvent = Event.new(title: "frendly Parisian Dinner", experience: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
+pierreEvent.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "pierreEvent.png", content_type: "image/png")
+pierreEvent.save!
 
-pierreEvent2 = Event.create(title: 'Brunch on the beach', type: 'Brunch', address: 'plage du solidor 35400 Saint-Malo', description: "Brunch with a view on the beach", date: "15/06/2022", capacity: 8, user: pierre)
+pierreEvent2 = Event.new(title: "Brunch on the beach", experience: "Brunch", address: "plage du solidor 35400 Saint-Malo", description: "Brunch with a view on the beach", date: "15/06/2022", language: "English", capacity: 8, user: pierre)
+pierreEvent2.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "pierreEvent2.png", content_type: "image/png")
+pierreEvent2.save!
 
-sarahEvent = Event.create(title: 'Learn Portuguese Food ', type: 'Cooking Class', address: '17 boulevard clemenceau 35000 Rennes', description: "Portuguese food, songs and fun!", date: "28/06/2022", capacity: 5, user: sarah)
+sarahEvent = Event.new(title: "Learn Portuguese Food", experience: "Cooking Class", address: "17 boulevard clemenceau 35000 Rennes", description: "Portuguese food, songs and fun!", date: "28/06/2022", language: "French", capacity: 5, user: sarah)
+sarahEvent.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "sarahEvent.png", content_type: "image/png")
+sarahEvent.save!
 
-nicolasEvent = Event.create(title: 'Traditional Dim Sum Cooking Class', type: 'Cooking Class', address: 'Tour eiffel', description: "Learn how to make Dim with friends", date: "13/08/2022", capacity: 6, user: nicolas)
-
+nicolasEvent = Event.new(title: "Traditional Dim Sum Cooking Class", experience: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends", date: "13/08/2022", language: "French", capacity: 6, user: nicolas)
+nicolasEvent.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "nicolasEvent.png", content_type: "image/png")
+nicolasEvent.save!
 
 puts "Event seed finish !"
 
@@ -89,23 +96,23 @@ sleep(1)
 
 puts "Network seed start..."
 
-company = Network.create(name: "My company", user_id: juliette)
-Network.create(name: "Good Food", user_id: louis)
-Network.create(name: "Wine Lovers", user_id: nicolas)
-pizza = Network.create(name: "Pizzzzzaaaaa !!!!!!", user_id: nicolas)
+company = Network.create(name: "My company", user_id: juliette.id)
+Network.create(name: "Good Food", user_id: louis.id)
+Network.create(name: "Wine Lovers", user_id: nicolas.id)
+pizza = Network.create(name: "Pizzzzzaaaaa !!!!!!", user_id: nicolas.id)
 
 puts "Network seed finish..."
 
 sleep(1)
 
-puts "Network User seed start..."
+puts "Networks User seed start..."
 
-Networks_user.create(network_id: pizza, user_id: juliette.id)
-Networks_user.create(network_id: pizza, user_id: louis.id)
-Networks_user.create(network_id: company, user_id: nicolas.id)
-Networks_user.create(network_id: company, user_id: louis.id)
+NetworksUser.create(user_id: juliette.id, network_id: pizza.id)
+NetworksUser.create(user_id: pierre.id, network_id: pizza.id)
+NetworksUser.create(user_id: nicolas.id, network_id: company.id)
+NetworksUser.create(user_id: louis.id, network_id: company.id)
 
-puts "Network User seed finish..."
+puts "Networks User seed finish..."
 
 sleep(1)
 
