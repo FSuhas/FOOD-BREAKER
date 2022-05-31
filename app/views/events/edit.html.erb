@@ -1,0 +1,33 @@
+<h1>Edit Event</h1>
+
+<%= simple_form_for @event do |f| %>
+    <%= f.input :title,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "title" } %>
+    <%= f.input :experience, collection: Event::EXPERIENCE,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "experience" } %>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "address" }%>
+    <%= f.input :description,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "description" }%>
+    <%= f.input :date,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "date" }%>
+    <%= f.input :language, collection: Event::LANGUAGE,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "language" }%>
+    <%= f.input :capacity,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "capacity" }%>
+    <%= f.button :submit, "Edit Event" %>
+<% end %>
