@@ -1,11 +1,14 @@
 <h1>Dashboard</h1>
 <ul>
   <% @event.each do |e| %>
-    <li><%= e.title %>
+    <li><%= e.title %> :
       <% @booking.each do |b| %>
-        <%= b.nb_guest %>
-      <% end %>
-    </li>
+        <% if e.id == b.event_id %>
+          <%= b.confirmation %>
+          <%= b.nb_guest %>
+        <% end %>
+        </li>
+    <% end %>
   <% end %>
 </ul>
 <%= console %>

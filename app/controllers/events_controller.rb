@@ -10,11 +10,20 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new
-    @event.save!
+    @event = Event.new(params_create)
+    @event.user = current_user
+    if @event.save
+      redirect_to dashboard_path, notice: "You have create a new event"
+    else
+      render 'events/new', status: :unprocessable_entity
+    end
   end
 
   private
+
+  def params_create
+    params.require(:event).permit(:id, :title, :experience, :address, :description, :date, :language, :capacity)
+  end
 
   def event_params
     params.require(:events).permit(:id)

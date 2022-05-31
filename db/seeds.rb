@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'json'
+require 'date'
 
 puts "------------------------------"
 puts "----------Start seed----------"
@@ -85,19 +86,53 @@ sleep(1)
 
 puts "Event seed start..."
 
-pierre_event = Event.new(title: "frendly Parisian Dinner", experience: "Dinner", address: "17 boulevard clemenceau 35000 Rennes", description: "Dinner with friends around French cheeses and wines", date: "12/06/2022", language: "French", capacity: 10, user: pierre)
+pierre_event = Event.new(title: "frendly Parisian Dinner",
+  experience: "Dinner",
+  address: "17 boulevard clemenceau 35000 Rennes",
+  description: "Dinner with friends around French cheeses and wines",
+  date: Date.new(2022,6,20),
+  language: "French",
+  capacity: 10, user: pierre)
+
 pierre_event.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "pierreEvent.png", content_type: "image/png")
 pierre_event.save!
 
-pierre_event_two = Event.new(title: "Brunch on the beach", experience: "Brunch", address: "plage du solidor 35400 Saint-Malo", description: "Brunch with a view on the beach", date: "15/06/2022", language: "English", capacity: 8, user: pierre)
+pierre_event_two = Event.new(title: "Brunch on the beach",
+  experience: "Brunch",
+  address: "plage du solidor 35400 Saint-Malo",
+  description: "Brunch with a view on the beach",
+  date: Date.new(2022,6,14),
+  language: "English",
+  capacity: 8,
+  user: pierre)
+
 pierre_event_two.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "pierreEvent2.png", content_type: "image/png")
 pierre_event_two.save!
 
-sarah_event = Event.new(title: "Learn Portuguese Food", experience: "Cooking Class", address: "17 boulevard clemenceau 35000 Rennes", description: "Portuguese food, songs and fun!", date: "28/06/2022", language: "French", capacity: 5, user: sarah)
-sarah_event.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "sarahEvent.png", content_type: "image/png")
+sarah_event = Event.new(title: "Learn Portuguese Food",
+  experience: "Cooking Class",
+  address: "17 boulevard clemenceau 35000 Rennes",
+  description: "Portuguese food, songs and fun!",
+  date: Date.new(2022,6,12),
+  language: "French",
+  capacity: 5,
+  user: sarah)
+
+sarah_event.photos.attach(io: URI.open("https://source.unsplash.com/random"),
+filename: "sarahEvent.png",
+content_type: "image/png")
+
 sarah_event.save!
 
-nicolas_event = Event.new(title: "Traditional Dim Sum Cooking Class", experience: "Cooking Class", address: "Tour eiffel", description: "Learn how to make Dim with friends", date: "13/08/2022", language: "French", capacity: 6, user: nicolas)
+nicolas_event = Event.new(title: "Traditional Dim Sum Cooking Class",
+  experience: "Cooking Class",
+  address: "Tour eiffel",
+  description: "Learn how to make Dim with friends",
+  date: Date.new(2022,6,24),
+  language: "French",
+  capacity: 6,
+  user: nicolas)
+
 nicolas_event.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "nicolas_event.png", content_type: "image/png")
 nicolas_event.save!
 
@@ -107,7 +142,7 @@ sleep(1)
 
 puts "Booking seed start..."
 
-Booking.create(nb_guest: "4", confirmation: true, user_id: pierre.id, event_id: pierre_event.id )
+Booking.create(nb_guest: "4", confirmation: false, user_id: pierre.id, event_id: pierre_event.id )
 Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: pierre_event_two.id )
 Booking.create(nb_guest: "2", confirmation: true, user_id: sarah.id, event_id: sarah_event.id )
 Booking.create(nb_guest: "6", confirmation: false, user_id: sarah.id, event_id: sarah_event.id )
