@@ -1,0 +1,26 @@
+<%= @event.title %>
+<br>
+<%= @event.experience %>
+<br>
+<%= @event.address %>
+<br>
+<%= @event.description %>
+<br>
+<%= @event.date.strftime("%m/%d/%Y at %I:%M%p") %>
+<br>
+<%= @event.language %>
+<br>
+<%= @event.calcul_capacity %>
+<br>
+
+<% if @event.calcul_capacity > 0 %>
+  <%= simple_form_for [@event, @booking] do |f| %>
+    <%= f.input :nb_guest,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "Guest", min: 0, max: @event.capacity } %>
+    <%= f.button :submit, "Add our guest" %>
+  <% end %>
+
+<% end %>
+<%= console %>
