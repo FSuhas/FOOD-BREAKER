@@ -11,7 +11,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new
-    @event.save!
+    if @event.save
+      redirect_to dashboard_path, notice: "You have create a new event"
+    else
+      render 'events/new', status: :unprocessable_entity
+    end
   end
 
   private
