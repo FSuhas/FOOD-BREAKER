@@ -142,8 +142,8 @@ sleep(1)
 
 puts "Booking seed start..."
 
-Booking.create(nb_guest: "4", confirmation: false, user_id: pierre.id, event_id: pierre_event.id )
-Booking.create(nb_guest: "1", confirmation: true, user_id: pierre.id, event_id: pierre_event_two.id )
+Booking.create(nb_guest: "4", confirmation: false, user_id: juliette.id, event_id: pierre_event.id )
+Booking.create(nb_guest: "1", confirmation: true, user_id: nicolas.id, event_id: pierre_event_two.id )
 Booking.create(nb_guest: "2", confirmation: true, user_id: sarah.id, event_id: sarah_event.id )
 Booking.create(nb_guest: "6", confirmation: false, user_id: sarah.id, event_id: sarah_event.id )
 Booking.create(nb_guest: "3", confirmation: false, user_id: nicolas.id, event_id: nicolas_event.id )

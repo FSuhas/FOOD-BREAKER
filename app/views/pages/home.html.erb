@@ -1,6 +1,6 @@
 <h1>Pages home</h1>
 <ul>
   <% @events.each do |e| %>
-    <li><%= e.title %></li>
+    <li><%= e.title %> place restante <%= e.calcul_capacity_book %>/<%= e.capacity %></li>
   <% end %>
 </ul>

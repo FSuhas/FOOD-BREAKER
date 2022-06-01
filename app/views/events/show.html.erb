@@ -10,10 +10,10 @@
 <br>
 <%= @event.language %>
 <br>
-<%= @event.calcul_capacity %>
+<%= @event.calcul_capacity_book %>
 <br>
 
-<% if @event.calcul_capacity > 0 %>
+<% if @event.calcul_capacity_book > 0 %>
   <%= simple_form_for [@event, @booking] do |f| %>
     <%= f.input :nb_guest,
                   required: true,

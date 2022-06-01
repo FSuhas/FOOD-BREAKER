@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   validate :check_event_capacity
 
   def check_event_capacity
-    if self.nb_guest > self.event.calcul_capacity
+    if self.nb_guest > self.event.calcul_capacity_book
       errors.add(:nb_guest, "Number of guests reached")
     end
   end

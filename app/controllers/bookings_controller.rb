@@ -12,9 +12,21 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.confirmation = true
+    @event = Event.find(params[:event_id])
+    if @event.calcul_capacity_book >= @booking.nb_guest
+      @booking.update(confirmation: true)
+    else
+      render 'dashboard', status: :unprocessable_entity
+    end
+    redirect_to dashboard_path
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:nb_guest)
+    params.require(:booking).permit(:nb_guest, :id, :confirmation, :event_id, :user_id)
   end
 end
