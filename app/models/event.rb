@@ -11,6 +11,10 @@ class Event < ApplicationRecord
 
   has_many_attached :photos
 
+  def calcul_capacity_book
+    capacity - bookings.where(confirmation: true).sum(&:nb_guest)
+  end
+
   def calcul_capacity
     capacity - bookings.sum(&:nb_guest)
   end

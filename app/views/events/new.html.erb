@@ -1,33 +1,50 @@
-<h2>new event </h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4">
+      <div class="form-login">
 
-<%= simple_form_for @event do |f| %>
-    <%= f.input :title,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "title" } %>
-    <%= f.input :experience, collection: Event::EXPERIENCE,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "experience" } %>
-    <%= f.input :address,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "address" }%>
-    <%= f.input :description,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "description" }%>
-    <%= f.input :date,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "date" }%>
-    <%= f.input :language, collection: Event::LANGUAGE,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "language" }%>
-    <%= f.input :capacity,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "capacity" }%>
-    <%= f.button :submit, "Create Event" %>
-<% end %>
+        <h2>new event </h2>
+
+        <%= simple_form_for @event do |f| %>
+            <%= f.input :title,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Title",
+                        input_html: { autocomplete: "title" } %>
+            <%= f.input :experience, collection: Event::EXPERIENCE,
+                        required: true,
+                        autofocus: true,
+                        label: "Experience type",
+                        input_html: { autocomplete: "experience" } %>
+            <%= f.input :address,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Address",
+                        input_html: { autocomplete: "address" } %>
+            <%= f.input :description,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Description",
+                        input_html: { autocomplete: "description" } %>
+            <%= f.input :date, as: :date, html5: true %>
+            <%= f.input :language, collection: Event::LANGUAGE,
+                        required: true,
+                        autofocus: true,
+                        label: "Language",
+                        input_html: { autocomplete: "language" } %>
+            <%= f.input :capacity,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Capacity",
+                        input_html: { autocomplete: "capacity" } %>
+
+            <%= f.button :submit, "Create Event", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

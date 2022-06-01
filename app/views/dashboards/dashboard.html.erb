@@ -1,13 +1,14 @@
 <h1>Dashboard</h1>
 <ul>
   <% @event.each do |e| %>
-    <li><%= e.title %> :
-      <% @booking.each do |b| %>
-        <% if e.id == b.event_id %>
-          <%= b.confirmation %>
-          <%= b.nb_guest %>
-        <% end %>
+        <li><%= e.title %> :
+          <% e.bookings.each do |b| %>
+            <% if b.confirmation.nil? %>
+              <%= b.confirmation %>
+              <%= link_to "link", event_booking_path(e, b), data: { turbo_method: "patch" } %>
+              <%= b.nb_guest %>
+            <% end %>
+          <% end %>
         </li>
     <% end %>
-  <% end %>
 </ul>
