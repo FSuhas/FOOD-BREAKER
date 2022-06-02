@@ -1,4 +1,4 @@
-<div class="container fixed-bottom" id="nav-d-none">
+<div class="fixed-bottom" id="nav-d-none" style="background-color: black;">  <%#= TODO: changer le background avec une image %>
   <ul class="navbar-fab">
     <% if user_signed_in? %>
       <li>
@@ -18,7 +18,7 @@
           <%= image_tag 'commu.png', width: 60, height: 60 %>
         <% end %>
       </li>
-<%= console %>
+
       <li >
         <%= link_to dashboard_path do %>
           <%= image_tag 'profile.png', width: 60, height: 60 %>

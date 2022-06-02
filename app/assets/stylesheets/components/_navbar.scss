@@ -1,6 +1,15 @@
 .navbar-fab {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 14px;
   list-style: none;
+  margin-bottom: 1px;
+
+  li {
+    margin: 3px;
+  }
+}
+
+#nav-d-none {
+  display: flex;
 }
