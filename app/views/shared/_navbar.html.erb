@@ -14,11 +14,11 @@
       </li>
 
       <li>
-        <%= link_to network_path(NetworksUser.all.where(user_id: current_user).first.id) do %>
+        <%= link_to network_path(current_user.networks.first) do %>
           <%= image_tag 'commu.png', width: 60, height: 60 %>
         <% end %>
       </li>
-
+<%= console %>
       <li >
         <%= link_to dashboard_path do %>
           <%= image_tag 'profile.png', width: 60, height: 60 %>

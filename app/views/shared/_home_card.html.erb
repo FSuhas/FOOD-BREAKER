@@ -6,7 +6,7 @@
           <div class="col">
             <div class="card h-90 shadow-sm">
               <li>
-                <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
+                <%= cl_image_tag e.user.photo.key, class: 'card-img-top', height: 220, width: 150, crop: :thumb, style: 'object-fit: contain;' %>
                 <div class="card-body">
                   <div class="clearfix mb-3">
                     <h5 class="card-title"><%= e.title %></h5>

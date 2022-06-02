@@ -3,19 +3,17 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
 
-// -------------------------------------Formulaire Events New------------------------------------------------
+// -----------------------------------------Formulaire Events New-------------------------------------------------------
 
 var currentTab = 0;
 document.addEventListener("turbo:load", function(event) {
-
-
-showTab(currentTab);
-
+  showTab(currentTab);
 });
 
 function showTab(n) {
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
+
   if (n == 0) {
   document.getElementById("prevBtn").style.display = "none";
   } else {
@@ -31,9 +29,12 @@ function showTab(n) {
 
 function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
+
   if (n == 1 && !validateForm()) return false;
+
   x[currentTab].style.display = "none";
   currentTab = currentTab + n;
+
   if (currentTab >= (x.length -1)) {
 
   document.getElementById("nextprevious").style.display = "none";
@@ -42,11 +43,8 @@ function nextPrev(n) {
   // document.getElementById("text-message").style.display = "block";
   document.getElementById("nextBtn").classList.add("d-none");
   document.getElementById("lastBtn").classList.remove("d-none");
-
-
-
   }
-showTab(currentTab);
+  showTab(currentTab);
 }
 
 function validateForm() {
@@ -54,15 +52,13 @@ function validateForm() {
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
   for (i = 0; i < y.length; i++) {
-      if (y[i].value == "") {
-          y[i].className += " invalid";
-          valid = false;
-      }
-
-
+    if (y[i].value == "") {
+        y[i].className += " invalid";
+        valid = false;
+    }
   }
   if (valid) {
-      document.getElementsByClassName("step")[currentTab].className += " finish";
+    document.getElementsByClassName("step")[currentTab].className += " finish";
   }
   return valid;
 }
@@ -70,17 +66,21 @@ function validateForm() {
 function fixStepIndicator(n) {
   var i, x = document.getElementsByClassName("step");
   for (i = 0; i < x.length; i++) {
-      x[i].className = x[i].className.replace(" active", "");
+    x[i].className = x[i].className.replace(" active", "");
   }
   x[n].className += " active";
 }
 
 global.nextPrev = nextPrev
 
-// ---------------------------------------------------------------------------------------------------
+// ------------------------------------Nav-bar d-none when use phone----------------------------------------------------
+
+
 let navBar = document.getElementById("nav-d-none");
 let input = document.getElementById("event_title");
 
 input.addEventListener("click", () => {
   document.getElementById("nav-d-none").classList.toggle("d-none");
 });
+
+// ---------------------------------------------------------------------------------------------------------------------
