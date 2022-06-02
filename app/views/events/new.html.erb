@@ -1,50 +1,95 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-4">
-      <div class="form-login">
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+                <h1 id="register">Feel like sharing a meal ?</h1>
+                <div class="all-steps" id="all-steps">
+                  <span class="step"><i class="fa fa-user"></i></span>
+                  <span class="step"><i class="fa fa-shopping-bag"></i></span>
+                  <span class="step"><i class="fa fa-map-marker"></i></span>
+                  <span class="step"><i class="fa fa-car"></i></span>
+                  <span class="step"><i class="fa fa-spotify"></i></span>
+                  <span class="step"><i class="fa fa-mobile-phone"></i></span>
+                  <span class="step"><i class="fa fa-mobile-phone"></i></span>
+                </div>
 
-        <h2>new event </h2>
-
-        <%= simple_form_for @event do |f| %>
-            <%= f.input :title,
+            <%= simple_form_for @event, html: { id: "regForm" } do |f|  %>
+                <div class="tab" id="focus-d-none">
+                  <h6>How would you name this event?</h6>
+                    <p>
+                      <%= f.input :title,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Title",
                         input_html: { autocomplete: "title" } %>
-            <%= f.input :experience, collection: Event::EXPERIENCE,
+                    </p>
+                </div>
+                <div class="tab">
+                  <h6>Choose an event type</h6>
+                    <p>
+                      <%= f.input :experience, collection: Event::EXPERIENCE,
                         required: true,
                         autofocus: true,
-                        label: "Experience type",
                         input_html: { autocomplete: "experience" } %>
-            <%= f.input :address,
+                    </p>
+                </div>
+                <div class="tab">
+                    <h6>Where to go?</h6>
+                    <p>
+                      <%= f.input :address,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Address",
                         input_html: { autocomplete: "address" } %>
-            <%= f.input :description,
+                    </p>
+                </div>
+                <div class="tab">
+                    <h6>What are you proposing ? (description to be seen by users)</h6>
+                    <p>
+                      <%= f.input :description,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Description",
                         input_html: { autocomplete: "description" } %>
-            <%= f.input :date, as: :date, html5: true %>
-            <%= f.input :language, collection: Event::LANGUAGE,
+                    </p>
+                </div>
+                <div class="tab">
+                    <h6>What day, what time ?</h6>
+                    <p>
+                      <%= f.input :date, as: :date, html5: true %>
+                    </p>
+                </div>
+                <div class="tab">
+                    <h6>What language will you speak ?</h6>
+                    <p>
+                      <%= f.input :language, collection: Event::LANGUAGE,
                         required: true,
                         autofocus: true,
-                        label: "Language",
                         input_html: { autocomplete: "language" } %>
-            <%= f.input :capacity,
+                    </p>
+                </div>
+                <div class="tab">
+                    <h6>How many of you are coming ?</h6>
+                    <p>
+                      <%= f.input :capacity,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Capacity",
                         input_html: { autocomplete: "capacity" } %>
-
-            <%= f.button :submit, "Create Event", class: "btn btn-primary" %>
-        <% end %>
-      </div>
+                    </p>
+                </div>
+                <%# <div class="thanks-message text-center" id="text-message">
+                  <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
+                  <h3>Thankyou for your feedback!</h3>
+                  <span>Thanks for your valuable information. It helps us to improve our services!</span>
+                </div> %>
+                <div style="overflow:auto;" id="nextprevious">
+                    <div style="float:right;">
+                      <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button>
+                      <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+              <button type="submit" id="lastBtn" class="d-none" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button>
+            <% end %>
+        </div>
     </div>
-  </div>
 </div>
