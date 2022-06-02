@@ -1,0 +1,31 @@
+<main id="home-card">
+  <% @events.each do |e| %>
+    <%= link_to event_path(e) do %>
+      <div class="container-fluid my-4 p-3" style="margin-top:50px;">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+          <div class="col">
+            <div class="card-sl ">
+              <li>
+                  <%= cl_image_tag e.user.photo.key,
+                                                    height: 220,
+                                                    width: 150,
+                                                    crop: :scale,
+                                                    class: "card-img-top" %>
+                  <div class="card-heading">
+                      <%= e.title %>
+                  </div>
+                  <div class="card-text">
+                      <%= e.description %>
+                  </div>
+                  <div class="card-slot">
+                      Slots : <%= e.calcul_capacity_book %>/<%= e.capacity %>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
