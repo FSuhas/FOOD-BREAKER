@@ -1,27 +1,24 @@
-  <%= image_tag 'logo.png', height: 120, id: 'logo'  %>
-  <h1 class="text-center">Food Breaker</h1>
-
 <main id="home-card">
   <% @events.each do |e| %>
-  <%= link_to event_path(e) do %>
-    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
-      <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-        <div class="col">
-          <div class="card h-90 shadow-sm">
-            <li>
-              <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <div class="clearfix mb-3">
-                  <h5 class="card-title"><%= e.title %></h5>
-                  <span class="float-start badge rounded-pill bg-primary"><%= e.experience %></span>
-                  <span class="float-end price-hp">Remaining slots : <%= e.calcul_capacity_book %>/<%= e.capacity %></li></span>
+    <%= link_to event_path(e) do %>
+      <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+          <div class="col">
+            <div class="card h-90 shadow-sm">
+              <li>
+                <img src="https://www.freepnglogos.com/uploads/notebook-png/download-laptop-notebook-png-image-png-image-pngimg-2.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="clearfix mb-3">
+                    <h5 class="card-title"><%= e.title %></h5>
+                    <span class="float-start badge rounded-pill bg-primary"><%= e.experience %></span>
+                    <span class="float-end price-hp">Remaining slots : <%= e.calcul_capacity_book %>/<%= e.capacity %></li></span>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   <% end %>
 </main>

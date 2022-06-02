@@ -19,8 +19,9 @@
       <%= f.input :nb_guest,
                     required: true,
                     autofocus: true,
+                    label: 'For how many people?',
                     input_html: { autocomplete: "Guest", min: 0, max: @event.capacity } %>
-      <%= f.button :submit, "Add our guest", class: "btn btn-primary" %>
+      <%= f.button :submit, "Reserved", class: "btn btn-primary" %>
     <% end %>
   <% end %>
 
