@@ -1,25 +1,27 @@
-<%= @event.title %>
-<br>
-<%= @event.experience %>
-<br>
-<%= @event.address %>
-<br>
-<%= @event.description %>
-<br>
-<%= @event.date.strftime("%m/%d/%Y at %I:%M%p") %>
-<br>
-<%= @event.language %>
-<br>
-<%= @event.calcul_capacity_book %>
-<br>
+<div class="container">
+  <h2 class="text-center my-3"><%= @event.title %></h2>
+  <%= @event.description %>
+  <br>
+  <%= @event.experience %>
+  <br>
+  <%= @event.address %>
+  <br>
+  <br>
+  <%= @event.date.strftime("%m/%d/%Y at %I:%M%p") %>
+  <br>
+  <%= @event.language %>
+  <br>
+  <%= @event.calcul_capacity_book %>
+  <br>
 
-<% if @event.calcul_capacity_book > 0 %>
-  <%= simple_form_for [@event, @booking] do |f| %>
-    <%= f.input :nb_guest,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "Guest", min: 0, max: @event.capacity } %>
-    <%= f.button :submit, "Add our guest" %>
+  <% if @event.calcul_capacity_book > 0 %>
+    <%= simple_form_for [@event, @booking] do |f| %>
+      <%= f.input :nb_guest,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "Guest", min: 0, max: @event.capacity } %>
+      <%= f.button :submit, "Add our guest", class: "btn btn-primary" %>
+    <% end %>
   <% end %>
 
-<% end %>
+</div>
