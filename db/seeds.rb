@@ -155,7 +155,7 @@ sleep(1)
 puts "Network seed start..."
 
 company = Network.create(name: "My company", user_id: juliette.id)
-Network.create(name: "Good Food", user_id: louis.id)
+good_food = Network.create(name: "Good Food", user_id: pierre.id)
 Network.create(name: "Wine Lovers", user_id: nicolas.id)
 pizza = Network.create(name: "Pizzzzzaaaaa !!!!!!", user_id: nicolas.id)
 
@@ -165,6 +165,9 @@ sleep(1)
 
 puts "Networks User seed start..."
 
+NetworksUser.create(user_id: juliette.id, network_id: good_food.id)
+NetworksUser.create(user_id: nicolas.id, network_id: good_food.id)
+NetworksUser.create(user_id: louis.id, network_id: good_food.id)
 NetworksUser.create(user_id: juliette.id, network_id: pizza.id)
 NetworksUser.create(user_id: pierre.id, network_id: pizza.id)
 NetworksUser.create(user_id: nicolas.id, network_id: company.id)
