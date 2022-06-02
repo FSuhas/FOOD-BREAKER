@@ -1,13 +1,2 @@
-
-
-<div class="container">
-<%= image_tag 'logo.png', height: 120  %>
-  <h1 class="text-center">Pages home</h1>
-  <ul>
-  <% @events.each do |e| %>
-    <li><%= e.title %> place restante <%= e.calcul_capacity_book %>/<%= e.capacity %></li>
-  <% end %>
-  </ul>
-</div>
-
+<%= render 'shared/home_card' %>
 <%= render 'shared/new_event' %>
