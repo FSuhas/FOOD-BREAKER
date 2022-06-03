@@ -1,16 +1,19 @@
+
 <main id="home-card">
+<h2>Discover the meals near you</h2>
   <% @events.each do |e| %>
     <%= link_to event_path(e) do %>
-      <div class="container-fluid my-4 p-3" style="margin-top:50px;">
+      <div class="container-fluid my-4" id='event-home'>
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
           <div class="col">
             <div class="card-sl ">
               <li>
+                <%# <img src="https://source.unsplash.com/random?food" alt=""> %>
                   <%= cl_image_tag e.user.photo.key,
                                                     height: 220,
                                                     width: 150,
-                                                    crop: :scale,
-                                                    class: "card-img-top" %>
+                                                    class: "card-img-top",
+                                                    style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" %>
                   <div class="card-heading">
                       <%= e.title %>
                   </div>

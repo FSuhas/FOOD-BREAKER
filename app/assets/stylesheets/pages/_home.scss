@@ -2,4 +2,38 @@
 #logo {
   position: sticky;
   top: 0;
+  height: 80px;
+  width: 0 auto;
+}
+#div-logo {
+  position: sticky;
+  top: 0;
+  height: 80px;
+  width: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-left: 11px;
+  h1 {
+    font-family: 'Gentium Plus', serif;
+    font-size: 32px;
+    color: #2F7A7F;
+  }
+}
+
+#home-card {
+  h2 {
+    font-family: 'Gentium Plus', serif;
+    font-size: 20px;
+    color: #424242;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-align: center;
+    text-decoration-style: wavy;
+  }
+}
+
+#h {
+  color: $primary !important;
+  z-index: 100000;
 }

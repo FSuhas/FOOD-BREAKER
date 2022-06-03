@@ -1,0 +1,13 @@
+.banner-profil {
+  display: flex;
+  justify-content: center;
+  height: 30vh;
+  background-size: cover;
+  background-position: center;
+  img {
+    border: white solid 1px;
+    position: absolute;
+    left: 139px;
+    top: 149px;
+  }
+}

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :bookings, only: [:destroy]
   resources :networks, except: [:new, :index]
   get '/dashboard', to: 'dashboards#dashboard'
+  get '/profile', to: 'profiles#profile'
 end

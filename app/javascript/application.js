@@ -5,6 +5,8 @@ import "bootstrap"
 
 // -----------------------------------------Formulaire Events New-------------------------------------------------------
 
+
+
 var currentTab = 0;
 document.addEventListener("turbo:load", function(event) {
   showTab(currentTab);
