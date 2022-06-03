@@ -20,7 +20,7 @@
       </li>
 
       <li >
-        <%= link_to dashboard_path do %>
+        <%= link_to profile_path do %>
           <%= image_tag 'profile.png', width: 60, height: 60 %>
         <% end %>
       </li>
@@ -28,7 +28,9 @@
       </li>
     <% else %>
       <li>
-        <%= link_to "Login", new_user_session_path %>
+        <%= link_to "Login", new_user_session_path do %>
+          <%= image_tag 'profile.png', width: 60, height: 60 %>
+        <% end %>
       </li>
     <% end %>
   </ul>

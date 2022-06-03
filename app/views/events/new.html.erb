@@ -3,18 +3,16 @@
         <div class="col-md-8">
                 <h1 id="register">Feel like sharing a meal ?</h1>
                 <div class="all-steps" id="all-steps">
-                  <span class="step"><i class="fa fa-user"></i></span>
-                  <span class="step"><i class="fa fa-shopping-bag"></i></span>
-                  <span class="step"><i class="fa fa-map-marker"></i></span>
-                  <span class="step"><i class="fa fa-car"></i></span>
-                  <span class="step"><i class="fa fa-spotify"></i></span>
-                  <span class="step"><i class="fa fa-mobile-phone"></i></span>
-                  <span class="step"><i class="fa fa-mobile-phone"></i></span>
+                  <span class="step"><i class="fa-solid fa-bowl-food"></i></span>
+                  <span class="step"><i class="fa-solid fa-comment"></i></span>
+                  <span class="step"><i class="fa-solid fa-calendar-day"></i></span>
+                  <span class="step"><i class="fa-solid fa-location-dot"></i></span>
+                  <span class="step"><i class="fa-solid fa-language"></i></span>
                 </div>
 
             <%= simple_form_for @event, html: { id: "regForm" } do |f|  %>
                 <div class="tab" id="focus-d-none">
-                  <h6>How would you name this event?</h6>
+                  <h6>Choose a name and a type for your meal</h6>
                     <p>
                       <%= f.input :title,
                         required: true,
@@ -22,24 +20,11 @@
                         label: false,
                         input_html: { autocomplete: "title" } %>
                     </p>
-                </div>
-                <div class="tab">
-                  <h6>Choose an event type</h6>
                     <p>
                       <%= f.input :experience, collection: Event::EXPERIENCE,
                         required: true,
                         autofocus: true,
-                        input_html: { autocomplete: "experience" } %>
-                    </p>
-                </div>
-                <div class="tab">
-                    <h6>Where to go?</h6>
-                    <p>
-                      <%= f.input :address,
-                        required: true,
-                        autofocus: true,
-                        label: false,
-                        input_html: { autocomplete: "address" } %>
+                        input_html: { autocomplete: "type" } %>
                     </p>
                 </div>
                 <div class="tab">
@@ -53,9 +38,26 @@
                     </p>
                 </div>
                 <div class="tab">
-                    <h6>What day, what time ?</h6>
+                    <h6>What day do we come and how much can we do?</h6>
                     <p>
                       <%= f.input :date, as: :date, html5: true %>
+                    </p>
+                    <p>
+                      <%= f.input :capacity,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        input_html: { autocomplete: "capacity" } %>
+                    </p>
+                </div>
+                <div class="tab">
+                    <h6>Where to go?</h6>
+                    <p>
+                      <%= f.input :address,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        input_html: { autocomplete: "address" } %>
                     </p>
                 </div>
                 <div class="tab">
@@ -65,16 +67,6 @@
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "language" } %>
-                    </p>
-                </div>
-                <div class="tab">
-                    <h6>How many of you are coming ?</h6>
-                    <p>
-                      <%= f.input :capacity,
-                        required: true,
-                        autofocus: true,
-                        label: false,
-                        input_html: { autocomplete: "capacity" } %>
                     </p>
                 </div>
                 <%# <div class="thanks-message text-center" id="text-message">
