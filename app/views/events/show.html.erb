@@ -1,4 +1,9 @@
 <div class="container">
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
   <h2 class="text-center my-3"><%= @event.title %></h2>
   <%= @event.description %>
   <br>
@@ -24,5 +29,4 @@
       <%= f.button :submit, "Reserved", class: "btn btn-primary" %>
     <% end %>
   <% end %>
-
 </div>
