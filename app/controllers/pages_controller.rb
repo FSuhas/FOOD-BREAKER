@@ -3,5 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @events = Event.all
+    @booking = Booking.new
+
+
   end
 end

@@ -1,8 +1,21 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit]
 
+  def index
+    @event = Event.new
+    @booking = Booking.new
+    @event = Event.all
+  end
+
   def show
-  @booking = Booking.new
+    @booking = Booking.new
+    @event = Event.find(params[:id])
+    @markers = [
+      {
+        lat: @event.latitude,
+        lng: @event.longitude
+      }
+    ]
   end
 
   def new
@@ -22,7 +35,7 @@ class EventsController < ApplicationController
   private
 
   def params_create
-    params.require(:event).permit(:id, :title, :experience, :address, :description, :date, :language, :capacity)
+    params.require(:event).permit(:title, :experience, :address, :description, :date, :language, :capacity, :user_id)
   end
 
   def event_params

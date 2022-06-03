@@ -11,6 +11,13 @@ class Event < ApplicationRecord
 
   has_many_attached :photos
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
+  def show
+    @user = current_user
+  end
+
   def calcul_capacity_book
     capacity - bookings.where(confirmation: true).sum(&:nb_guest)
   end
