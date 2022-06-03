@@ -1,4 +1,5 @@
 #home-card {
+  margin-top: 20px;
   list-style: none;
   a {
     text-decoration: none;
@@ -37,4 +38,8 @@
   color: #636262;
   border-radius: 0px 0px 5px 5px;
   text-align: end;
+}
+
+#event-home {
+  width: 87%;
 }

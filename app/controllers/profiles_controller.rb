@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
   def profile
-    @user = User.all
+    @user = current_user
   end
 end
