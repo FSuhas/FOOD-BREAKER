@@ -1,3 +1,94 @@
+<script type = "text/javascript">
+
+if (window.location.pathname == '/events/new') {
+
+  console.log("Hello")
+
+  let input = document.getElementById("event_title");
+  let navBar = document.getElementById("nav-d-none");
+
+  input.addEventListener("click", () => {
+    document.getElementById("nav-d-none").classList.add("d-none");
+  });
+
+  var currentTab = 0;
+  document.addEventListener("turbo:load", function(event) {
+    showTab(currentTab);
+  });
+
+  function showTab(n) {
+
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+
+    if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+    } else {
+    document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+    } else {
+    document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
+    }
+    fixStepIndicator(n)
+  }
+
+  function nextPrev(n) {
+    var x = document.getElementsByClassName("tab");
+
+    if (n == 1 && !validateForm()) return false;
+
+    x[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+
+    if (currentTab >= (x.length -1)) {
+
+    document.getElementById("nextprevious").style.display = "none";
+    document.getElementById("all-steps").style.display = "none";
+    document.getElementById("register").style.display = "none";
+    // document.getElementById("text-message").style.display = "block";
+    document.getElementById("nextBtn").classList.add("d-none");
+    document.getElementById("lastBtn").classList.remove("d-none");
+    }
+    showTab(currentTab);
+  }
+
+  function validateForm() {
+    var x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    for (i = 0; i < y.length; i++) {
+      if (y[i].value == "") {
+          y[i].className += " invalid";
+          valid = false;
+      }
+    }
+    if (valid) {
+      document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid;
+  }
+
+  function fixStepIndicator(n) {
+    var i, x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+      x[i].className = x[i].className.replace(" active", "");
+    }
+    x[n].className += " active";
+  }
+
+  global.nextPrev = nextPrev
+
+    // ------------------------------------Nav-bar d-none when use phone----------------------------------------------------
+
+
+
+};
+
+</script>
+
+
 <div class="container" id="show">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-8">
@@ -11,7 +102,7 @@
                 </div>
 
             <%= simple_form_for @event, html: { id: "regForm" } do |f|  %>
-                <div class="tab" id="focus-d-none">
+                <div class="tab start" id="focus-d-none">
                   <h6>Choose a name and a type for your meal</h6>
                     <p>
                       <%= f.input :title,
