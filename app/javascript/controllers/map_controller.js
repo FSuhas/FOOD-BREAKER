@@ -1,10 +1,15 @@
-// import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+
   }
+  static values = { apiKey: String }
+
+  static targets = ["address"]
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
@@ -15,6 +20,19 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl }))
+    this.map = new mapboxgl.Map({
+      container: this.element,
+      style: "mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb" // <-- use your own!
+    })
+    this.geocoder = new MapboxGeocoder({
+      accessToken: this.apiKeyValue,
+      types: "country,region,place,postcode,locality,neighborhood,address"
+    })
+    this.geocoder.addTo(this.element)
+    this.geocoder.on("result", event => this.#setInputValue(event))
+    this.geocoder.on("clear", () => this.#clearInputValue())
   }
 
   #addMarkersToMap() {
@@ -49,5 +67,13 @@ export default class extends Controller {
       .setPopup(popup)
       .addTo(this.map)
     })
+  }
+
+  #setInputValue(event) {
+    this.addressTarget.value = event.result["place_name"]
+  }
+
+  #clearInputValue() {
+    this.addressTarget.value = ""
   }
 }

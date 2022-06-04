@@ -2,6 +2,15 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit]
 
   def index
+    if params[:address].present?
+      sql_query = <<~SQL
+        events.address ILIKE :query
+      SQL
+      @events = Event.where(sql_query, query: "%#{params[:address]}%")
+    else
+      @events = Event.all
+    end
+
     @event = Event.new
     @booking = Booking.new
     @event = Event.all
@@ -35,7 +44,7 @@ class EventsController < ApplicationController
   private
 
   def params_create
-    params.require(:event).permit(:title, :experience, :address, :description, :date, :language, :capacity, :user_id)
+    params.require(:event).permit(:title, :experience, :address, :description, :date, :language, :capacity, :user_id, :query)
   end
 
   def event_params

@@ -9,13 +9,17 @@
             <div class="card-sl ">
               <li>
                 <%# <img src="https://source.unsplash.com/random?food" alt=""> %>
+                <% if e.photos.attached? %>
                   <%= cl_image_tag e.user.photo.key,
                                                     height: 220,
                                                     width: 150,
                                                     class: "card-img-top",
                                                     style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" %>
+                <% else %>
+                  <img src="https://source.unsplash.com/random?food" style="height: 220, width: 150" class="card-img-top"/>
+                <% end %>
                   <div class="card-heading">
-                      <%= e.title %>
+                      <%= e.title.capitalize %>
                   </div>
                   <div class="card-text">
                       <%= e.description %>

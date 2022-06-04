@@ -5,9 +5,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.event = @event
-    if @booking.save
+    if @event.bookings.count >= @event.capacity
+      render 'events/show', status: :unprocessable_entity
+    elsif @booking.save
       redirect_to event_path(@event), notice: "You made a reservation for #{@booking.nb_guest} people"
-    else
+    elsif
       render 'events/show', status: :unprocessable_entity
     end
   end
