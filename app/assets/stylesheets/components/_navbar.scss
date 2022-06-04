@@ -1,7 +1,7 @@
 .navbar-fab {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 28px;
+  grid-gap: 44px;
   list-style: none;
   margin-bottom: 1px;
 
@@ -12,6 +12,5 @@
 
 #nav-d-none {
   display: flex;
-  background-color: #ccecea;
-  border-radius: 25px 25px 0px 0px;
+  background: linear-gradient(179deg, #adaaaa, #ebd3fc);
 }

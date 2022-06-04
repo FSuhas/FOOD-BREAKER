@@ -3,32 +3,32 @@
     <% if user_signed_in? %>
       <li>
         <%= link_to root_path do %>
-          <%= image_tag 'home.png', width: 50, height: 50 %>
+          <%= image_tag 'home.png', width: 40, height: 40 %>
         <% end %>
       </li>
 
       <li >
         <%= link_to dashboard_path do %>
-          <%= image_tag 'dashboard.png', width: 50, height: 50 %>
+          <%= image_tag 'dashboard.png', width: 40, height: 40 %>
         <% end %>
       </li>
 
       <li>
         <%= link_to network_path(current_user.networks.first) do %>
-          <%= image_tag 'commu.png', width: 50, height: 50 %>
+          <%= image_tag 'commu.png', width: 40, height: 40 %>
         <% end %>
       </li>
 
       <li >
         <%= link_to profile_path do %>
-          <%= image_tag 'profile.png', width: 50, height: 50 %>
+          <%= image_tag 'profile.png', width: 40, height: 40 %>
         <% end %>
       </li>
 
       </li>
     <% else %>
       <li>
-          <%= image_tag 'profile.png', width: 50, height: 50 %>
+          <%= image_tag 'profile.png', width: 40, height: 40 %>
       </li>
     <% end %>
   </ul>
