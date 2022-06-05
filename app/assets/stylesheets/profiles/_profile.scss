@@ -1,0 +1,33 @@
+#cont-place {
+  margin-top: 25px;
+  .head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .avatar {
+      box-shadow: 0px 0px 4px 2px $primary;
+      border: 2px solid black;
+      margin-right: 9px;
+      margin-top: 14px;
+    }
+  }
+  h2 {
+    margin-top: 5px !important;
+  }
+  .right {
+    display: flex;
+    margin-bottom: -33px;
+  }
+  .bio {
+    margin-top: 9px;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 12px;
+    .fa-solid {
+      position: sticky;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}

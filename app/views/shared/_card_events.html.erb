@@ -1,9 +1,8 @@
 
 <main id="home-card">
-<h2>Discover the meals near you</h2>
   <% @events.each do |e| %>
     <%= link_to event_path(e) do %>
-      <div class="container-fluid my-4" id='event-home'>
+      <div class="container-fluid mt-1" id='event-home'>
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
           <div class="col">
             <div class="card-sl ">
@@ -11,22 +10,17 @@
                 <%# <img src="https://source.unsplash.com/random?food" alt=""> %>
                 <% if e.photos.attached? %>
                   <%= cl_image_tag e.user.photo.key,
-                                                    height: 220,
+                                                    height: 170,
                                                     width: 150,
                                                     class: "card-img-top",
                                                     style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" %>
                 <% else %>
-                  <img src="https://source.unsplash.com/random?food" style="height: 220, width: 150" class="card-img-top"/>
+                  <img src="https://source.unsplash.com/random?profile?food" style="height: 170, width: 150" class="card-img-top"/>
                 <% end %>
                   <div class="card-heading">
-                      <%= e.title.capitalize %>
-                  </div>
-                  <div class="card-text">
-                      <%= e.description %>
-                  </div>
-                  <div class="card-slot">
-                      Slots : <%= e.calcul_capacity_book %>/<%= e.capacity %>
-                  </div>
+                      <h4><%= e.title.capitalize %></h4>
+                      <p class="card-text"><%= e.description %></p>
+                      <p class="card-slot">Slots : <%= e.calcul_capacity_book %>/<%= e.capacity %></p>
                 </div>
               </li>
             </div>

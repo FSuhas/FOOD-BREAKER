@@ -7,6 +7,7 @@
 }
 #div-logo {
   position: sticky;
+  margin-top: 20px;
   top: 0;
   height: 80px;
   width: 0 auto;
@@ -36,4 +37,17 @@
 #h {
   color: $primary !important;
   z-index: 100000;
+}
+
+#event-head {
+  text-align: center;
+  h2 {
+  margin: 0;
+  margin-top: 39px;
+  font-family: 'Gentium Plus', serif;
+  }
+  hr {
+    padding: 0px;
+    margin: 0;
+  }
 }

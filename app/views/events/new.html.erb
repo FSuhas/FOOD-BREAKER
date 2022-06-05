@@ -1,5 +1,6 @@
 <script type = "text/javascript">
 
+
 if (window.location.pathname == '/events/new') {
 
   console.log("Hello")
@@ -7,7 +8,7 @@ if (window.location.pathname == '/events/new') {
   let input = document.getElementById("event_title");
   let navBar = document.getElementById("nav-d-none");
 
-  input.addEventListener("click", () => {
+  input.addEventListener("focus", () => {
     document.getElementById("nav-d-none").classList.add("d-none");
   });
 
@@ -26,7 +27,7 @@ if (window.location.pathname == '/events/new') {
     } else {
     document.getElementById("prevBtn").style.display = "inline";
     }
-    if (n == (x.length - 1)) {
+    if (n == (x.length + 1)) {
     document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
     } else {
     document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
@@ -42,14 +43,15 @@ if (window.location.pathname == '/events/new') {
     x[currentTab].style.display = "none";
     currentTab = currentTab + n;
 
-    if (currentTab >= (x.length -1)) {
+    if (currentTab >= (x.length)) {
 
     document.getElementById("nextprevious").style.display = "none";
     document.getElementById("all-steps").style.display = "none";
     document.getElementById("register").style.display = "none";
-    // document.getElementById("text-message").style.display = "block";
-    document.getElementById("nextBtn").classList.add("d-none");
-    document.getElementById("lastBtn").classList.remove("d-none");
+    document.getElementById("text-message").style.display = "block";
+
+    // document.getElementById("nextBtn").classList.add("d-none");
+    // document.getElementById("lastBtn").classList.remove("d-none");
     }
     showTab(currentTab);
   }
@@ -78,11 +80,7 @@ if (window.location.pathname == '/events/new') {
     x[n].className += " active";
   }
 
-  global.nextPrev = nextPrev
-
-    // ------------------------------------Nav-bar d-none when use phone----------------------------------------------------
-
-
+  // global.nextPrev = nextPrev
 
 };
 
@@ -90,7 +88,7 @@ if (window.location.pathname == '/events/new') {
 
 
 <div class="container" id="show">
-    <div class="row d-flex justify-content-center align-items-center">
+    <div class="row d-flex justify-content-center align-items-center" style="margin-top: 168px;">
         <div class="col-md-8">
                 <h1 id="register">Feel like sharing a meal ?</h1>
                 <div class="all-steps" id="all-steps">
@@ -99,7 +97,6 @@ if (window.location.pathname == '/events/new') {
                   <span class="step"><i class="fa-solid fa-calendar-day"></i></span>
                   <span class="step"><i class="fa-solid fa-location-dot"></i></span>
                   <span class="step"><i class="fa-solid fa-language"></i></span>
-                  <span class="step"><i class="fa-solid fa-check-double"></i></span>
                 </div>
 
             <%= simple_form_for @event, html: { id: "regForm" } do |f|  %>
@@ -162,14 +159,15 @@ if (window.location.pathname == '/events/new') {
                         input_html: { autocomplete: "language" } %>
                     </p>
                 </div>
+                <div class="thanks-message text-center" id="text-message"> <%= image_tag 'logo.png', class: 'mb-4', style: 'width: 100' %>
+                    <h3>Your meal is online!</h3>
+                    <button type="submit" id="lastBtn"><i class="fa-solid fa-check"></i></button>
+                </div>
                 <div style="overflow:auto;" id="nextprevious">
                     <div style="float:right;">
                       <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button>
                       <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button>
                     </div>
-                </div>
-                <div style="float:right;">
-                  <button type="submit" id="lastBtn" class="d-none" ><i class="fa fa-angle-double-right"></i></button>
                 </div>
             <% end %>
         </div>
