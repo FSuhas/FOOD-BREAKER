@@ -28,7 +28,26 @@
       </li>
     <% else %>
       <li>
-          <%= image_tag 'profile.png', width: 40, height: 40 %>
+        <%= link_to root_path do %>
+          <%= image_tag 'home.png', width: 40, height: 40 %>
+        <% end %>
+      </li>
+
+      <li >
+        <%= link_to user_session_path do %>
+          <%= image_tag 'dashboard.png', width: 40, height: 40, class: 'disabled' %>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to user_session_path do %>
+          <%= image_tag 'commu.png', width: 40, height: 40, class: 'disabled' %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_session_path do %>
+          <%= image_tag 'on.png', width: 40, height: 40 %>
+        <% end %>
       </li>
     <% end %>
   </ul>

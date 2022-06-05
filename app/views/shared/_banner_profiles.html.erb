@@ -5,7 +5,7 @@
   </div>
   <div class="bio">
   <strong>My bio:</strong>
-  <p><%= @user.bio %></p><i class="fa-solid fa-pen-to-square"></i>
+  <p><%= @user.bio.truncate(50) %></p><i class="fa-solid fa-pen-to-square"></i>
   </div>
   <div class="container" id="event-head">
     <h2>My events</h2>
