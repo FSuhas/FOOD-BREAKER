@@ -1,0 +1,31 @@
+<div class="product">
+  <ul>
+    <% @event.each do |e| %>
+      <li>
+        <div class="card-product">
+          <% if e.photos.attached? %>
+            <%= cl_image_tag e.user.photo.key,
+                                              height: 170,
+                                              width: 150,
+                                              class: "card-img-top",
+                                              style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" %>
+          <% else %>
+            <img src="https://source.unsplash.com/random?profile?food" style="height: 170, width: 150" class="card-img-top"/>
+          <% end %>
+        </div>
+        <div class="card-product-infos">
+          <h2><%= e.title %></h2>
+          <% e.bookings.each do |b| %>
+            <% if b.confirmation.nil? %>
+              <%= b.confirmation %>
+              <div class="slot">
+                <p>Request: <%= b.nb_guest %></p>
+                <%= link_to "Accept", event_booking_path(e, b), data: { turbo_method: "patch" }, class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit]
+  skip_before_action :authenticate_user!, only: [ :show ]
 
   def index
     if params[:address].present?

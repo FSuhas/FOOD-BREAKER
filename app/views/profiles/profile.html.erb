@@ -1,16 +1,4 @@
 <%= render 'shared/banner_profiles' %>
-<ul>
-  <% @event.each do |e| %>
-        <li><%= e.title %> :
-          <% e.bookings.each do |b| %>
-            <% if b.confirmation.nil? %>
-              <%= b.confirmation %>
-              <%= link_to "link", event_booking_path(e, b), data: { turbo_method: "patch" } %>
-              <%= b.nb_guest %>
-            <% end %>
-          <% end %>
-        </li>
-    <% end %>
-</ul>
+<%= render 'shared/card_product' %>
 
 <%= render 'shared/new_event' %>
