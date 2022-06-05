@@ -10,8 +10,10 @@
   color: #6A1B9A;
 }
 
-h1 {
+#show {
+  h1 {
   text-align: center
+  }
 }
 
 input {
@@ -61,7 +63,7 @@ button:focus{
 }
 
 .all-steps{
-    text-align: center;
+  text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 100%;
@@ -106,4 +108,15 @@ button:focus{
 
 #show {
   margin-top: 121px;
+}
+
+#lastBtn {
+  position: absolute;
+  bottom: 151px;
+  right: 44%;
+}
+
+#event_date {
+  margin-left: 0;
+  width: 70px;
 }

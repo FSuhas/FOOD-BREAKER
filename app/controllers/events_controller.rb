@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     @event = Event.new(params_create)
     @event.user = current_user
     if @event.save
-      redirect_to dashboard_path, notice: "You have create a new event"
+      redirect_to dashboard_path
     else
       render 'events/new', status: :unprocessable_entity
     end

@@ -1,3 +1,14 @@
-<div class="banner-profil" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random?food);">
-  <%= cl_image_tag current_user.photo.key, width: 100, height: 100, crop: :thumb, gravity: :face, class: 'avatar-large' %>
+<div class="container" id="cont-place">
+  <div class="head">
+    <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: 'avatar', id: 'img-place' %>
+    <div class="right"><h2><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2><i class="fa-solid fa-pen-to-square"></i></div>
+  </div>
+  <div class="bio">
+  <strong>My bio:</strong>
+  <p><%= @user.bio %></p><i class="fa-solid fa-pen-to-square"></i>
+  </div>
+  <div class="container" id="event-head">
+    <h2>My events</h2>
+    <hr>
+  </div>
 </div>
