@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    raise
+    bio.save
     redirect_to profile_path
   end
 end
