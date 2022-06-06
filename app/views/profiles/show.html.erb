@@ -1,0 +1,16 @@
+<%= render 'shared/banner_profile' %>
+
+<div class="container ratting">
+  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+</div>
+
+<div class="container bio" id="event-head">
+  <h2>Bio of <%= @user.first_name %> <%= @user.last_name %></h2>
+  <hr>
+  <p><%= @user.bio %></p>
+</div>
+<div class="container bio" id="event-head">
+  <h2>His events</h2>
+  <hr>
+</div>
+  <%= render 'shared/card_product' %>

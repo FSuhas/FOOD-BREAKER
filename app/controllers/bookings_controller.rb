@@ -26,6 +26,15 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    if @booking.destroy
+      redirect_to dashboard_path
+    else
+      render 'dashboard', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def booking_params
