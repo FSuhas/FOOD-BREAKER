@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :networks, except: [:new, :index]
   get '/dashboard', to: 'dashboards#dashboard'
   get '/profile', to: 'profiles#profile'
+  get '/profile/bio', to: 'profiles#bio', as: :edit_bio
   get '/profile/:id', to: 'profiles#show', as: :profile_show
 end

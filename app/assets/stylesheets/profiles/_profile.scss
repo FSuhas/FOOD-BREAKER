@@ -17,6 +17,13 @@
   .right {
     display: flex;
     margin-bottom: -33px;
+    button {
+      border: none;
+      background: none;
+    }
+    .fa-solid {
+      color: $main;
+    }
   }
   .bio {
     margin-top: 9px;

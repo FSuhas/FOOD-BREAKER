@@ -14,6 +14,16 @@
   h1 {
   text-align: center
   }
+  button {
+    background-color: #6A1B9A;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer
+  }
 }
 
 input {
@@ -39,16 +49,7 @@ input.invalid {
   display: none
 }
 
-button {
-  background-color: #6A1B9A;
-  color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  padding: 10px 20px;
-  font-size: 17px;
-  font-family: Raleway;
-  cursor: pointer
-}
+
 
 button:hover {
   opacity: 0.8

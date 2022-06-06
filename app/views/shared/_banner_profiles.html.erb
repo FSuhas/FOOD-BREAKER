@@ -1,14 +1,50 @@
 <div class="container" id="cont-place">
   <div class="head">
     <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: 'avatar', id: 'img-place' %>
-    <div class="right"><h2><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2><i class="fa-solid fa-pen-to-square"></i></div>
+    <div class="right"><h2><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-solid fa-pen-to-square"></i>
+    </div>
   </div>
   <div class="bio">
-  <strong>My bio:</strong>
-  <p><%= @user.bio.truncate(50) %></p><i class="fa-solid fa-pen-to-square"></i>
+    <strong>My bio:</strong>
+    <p><%= @user.bio.truncate(50) %></p>
+    <%= link_to edit_user_registration_path do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
   </div>
   <div class="container" id="event-head">
     <h2>My events</h2>
     <hr>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Edit </h2>
+
+        <%= simple_form_for(@user.bio ) do |f| %>
+
+          <div class="form-inputs">
+            <%= f.input :bio,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Your bio",
+                        input_html: { autocomplete: "bio" } %>
+
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
   </div>
 </div>

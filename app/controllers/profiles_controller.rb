@@ -9,4 +9,13 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     @event = @user.events
   end
+
+  def bio
+    @bio = current_user.bio
+  end
+
+  def update
+    raise
+    redirect_to profile_path
+  end
 end
