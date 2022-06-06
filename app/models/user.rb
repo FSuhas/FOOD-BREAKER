@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :networks
   has_many :bookings, through: :events
   has_one_attached :photo
+  belongs_to :profile
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
