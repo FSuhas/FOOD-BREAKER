@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, only: [:show, :edit]
 
   def profile
     @user = current_user
@@ -6,16 +7,28 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @event = @user.events
   end
 
-  def bio
-    @bio = current_user.bio
+  def edit
+    update
   end
 
   def update
-    bio.save
-    redirect_to profile_path
+    if @user.update(params_create)
+      redirect_to profile_path
+    else
+      render profile_path, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def set_profile
+    @user = User.find(params[:id])
+  end
+
+  def params_create
+    params.require(:user).permit(:id, :email, :first_name, :last_name, :avatar, :address, :bio )
   end
 end
