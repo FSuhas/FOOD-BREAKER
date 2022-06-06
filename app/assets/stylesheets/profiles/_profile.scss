@@ -31,3 +31,34 @@
     }
   }
 }
+
+.banner-profile {
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+}
+.avatar-profile {
+  .avatar-large {
+    position: absolute;
+    top: 126px;
+    left: 139px;
+    border: 2px solid white;
+  }
+}
+
+.ratting {
+  margin-top: 31px;
+  display: flex;
+  justify-content: center;
+  color: $main;
+}
+
+.bio {
+  margin-top: 26px;
+  h2 {
+    margin-top: 0;
+  }
+}

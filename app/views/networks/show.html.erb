@@ -1,4 +1,49 @@
-<h1><%= @network.name %></h1>
+<div id='div-logo'>
+  <%= image_tag 'logo.png', height: 120, id: 'logo' %>
+  <h1 class="text-center"><%= @network.name.split(" ").first %></h1> <h1 id='h' class="text-center"><%= @network.name.split(" ").last %></h1>
+</div>
 
-<p>membres :</p>
-<%= cl_image_tag User.where(id: current_user.id).first.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar-networkers" %>
+<div class="container" id="event-head">
+  <h2>My friends</h2>
+  <hr>
+</div>
+
+  <div class="container" style="display: flex; justify-content: center; margin-top: 12px;">
+    <% @network.networks_users.map(&:user).each do |n| %>
+      <%= link_to profile_show_path(n) do %>
+        <%= cl_image_tag n.photo.key, class: 'avatar', crop: :thumb, gravity: :face %>
+      <% end %>
+    <% end %>
+</div>
+
+<div class="container" id="event-head">
+  <h2>My friends' events</h2>
+  <hr>
+</div>
+
+<div class="product">
+  <ul>
+    <% @networks_user.each do |network_user| %>
+      <% network_user.events.each do |event| %>
+        <%= link_to event_path(event) do %>
+          <li>
+            <div class="card-product">
+              <% if event.photos.attached? %>
+                <%= cl_image_tag event.user.photo.key,
+                                                  height: 170,
+                                                  width: 150,
+                                                  class: "card-img-top",
+                                                  style: "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" %>
+              <% else %>
+                <img src="https://source.unsplash.com/random?profile?food" style="height: 170, width: 150" class="card-img-top"/>
+              <% end %>
+            </div>
+            <div class="card-product-infos">
+              <h2><%= event.title %></h2>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
