@@ -9,7 +9,7 @@ puts "------------------------------"
 
 puts "#destroy_all start ..."
 
-sleep(1)
+Message.destroy_all
 
 Chatroom.destroy_all
 
@@ -23,11 +23,7 @@ Event.destroy_all
 
 User.destroy_all
 
-sleep(1)
-
 puts "#destroy_all finish !"
-
-sleep(1)
 
 puts "User seed start..."
 
@@ -83,8 +79,6 @@ juliette.save!
 
 puts "user seed finish !"
 
-sleep(1)
-
 puts "Event seed start..."
 
 pierre_event = Event.new(title: "frendly Parisian Dinner",
@@ -139,8 +133,6 @@ nicolas_event.save!
 
 puts "Event seed finish !"
 
-sleep(1)
-
 puts "Booking seed start..."
 
 Booking.create(nb_guest: "4", confirmation: false, user_id: juliette.id, event_id: pierre_event.id )
@@ -151,8 +143,6 @@ Booking.create(nb_guest: "3", confirmation: false, user_id: nicolas.id, event_id
 
 puts "Booking seed finish..."
 
-sleep(1)
-
 puts "Network seed start..."
 
 company = Network.create(name: "My company", user_id: juliette.id)
@@ -161,8 +151,6 @@ Network.create(name: "Wine Lovers", user_id: nicolas.id)
 pizza = Network.create(name: "Pizzzzzaaaaa !!!!!!", user_id: nicolas.id)
 
 puts "Network seed finish..."
-
-sleep(1)
 
 puts "Networks User seed start..."
 
@@ -177,8 +165,6 @@ NetworksUser.create(user_id: louis.id, network_id: company.id)
 
 puts "Networks User seed finish..."
 
-sleep(1)
-
 puts "Chatroom seed start..."
 
 Chatroom.create(name: 'Chatroom')
@@ -189,4 +175,4 @@ puts "------------------------------"
 puts "----------All Good !----------"
 puts "------------------------------"
 
-sleep(1)
+sleep(2)
