@@ -30,3 +30,14 @@
     }
   }
 }
+
+
+.skin-msg {
+  box-shadow: -2px 3px 8px -3px $primary;
+  margin-top: 2px;
+  border-radius: 12px;
+  background: ivory;
+  p {
+    margin-left: 34px;
+  }
+}
