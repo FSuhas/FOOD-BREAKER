@@ -4,11 +4,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    .avatar {
+    margin-left: -13px;
+    .avatar-profile {
       box-shadow: 0px 0px 4px 2px $primary;
       border: 2px solid black;
-      margin-right: 9px;
-      margin-top: 14px;
     }
     button {
       border: none;
@@ -16,11 +15,11 @@
     }
   }
   h2 {
+    font-family: 'Gentium Plus', serif;
     margin-top: 5px !important;
   }
   .right {
     display: flex;
-    margin-bottom: -33px;
     button {
       border: none;
       background: none;
@@ -66,7 +65,7 @@
 }
 
 .ratting {
-  margin-top: 31px;
+  margin-top: -28px;
   display: flex;
   justify-content: center;
   color: $main;
