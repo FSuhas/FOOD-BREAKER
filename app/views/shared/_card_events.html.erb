@@ -19,7 +19,7 @@
                 <% end %>
                   <div class="card-heading">
                       <h4><%= e.title.capitalize %></h4>
-                      <p class="card-text"><%= e.description %></p>
+                      <p class="card-text"><%= e.description.truncate(50) %></p>
                       <p class="card-slot">Slots : <%= e.calcul_capacity_book %>/<%= e.capacity %></p>
                 </div>
               </li>

@@ -5,7 +5,7 @@
 </div>
 
 <div class="container bio" id="event-head">
-  <h2>Bio of <%= @user.first_name %> <%= @user.last_name %></h2>
+  <h2>Bio of <%= @user.nickname.capitalize %></h2>
   <hr>
   <p><%= @user.bio %></p>
 </div>
