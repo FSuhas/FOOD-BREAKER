@@ -4,7 +4,7 @@
       <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: 'avatar', id: 'img-place' %>
     </button>
     <div class="right"><h2><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#bio">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#name">
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
     </div>
@@ -12,9 +12,9 @@
   <div class="bio">
     <strong>My bio:</strong>
     <p><%= @user.bio.truncate(50) %></p>
-    <%= link_to edit_user_registration_path do %>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#bio">
       <i class="fa-solid fa-pen-to-square"></i>
-    <% end %>
+    </button>
   </div>
   <div class="container" id="event-head">
     <h2>My events</h2>
@@ -22,36 +22,14 @@
   </div>
 </div>
 
-<div class="modal fade" id="bio" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="container">
-        <h2>Edit </h2>
-        <%= simple_form_for(edit_user_registration_path) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :bio,
-                        required: true,
-                        autofocus: true,
-                        label: false,
-                        placeholder: "Your bio",
-                        input_html: { autocomplete: "bio" } %>
-          </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Update", data: { turbo_method: "patch" }, class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-        <%= link_to "Back", :back %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/card_product' %>
 
 <div class="modal fade" id="avatar" tabindex="-1" aria-labelledby="avatarLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="container">
         <h2>Edit </h2>
-        <%= simple_form_for(edit_user_registration_path) do |f| %>
+        <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
             <%= f.input :photo,
                         as: :file,
@@ -62,7 +40,60 @@
                         input_html: { autocomplete: "bio" } %>
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Update", data: { turbo_method: "patch" }, class: 'btn btn-primary' %>
+            <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="bio" tabindex="-1" aria-labelledby="bioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Edit </h2>
+        <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :bio,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Your bio",
+                        input_html: { autocomplete: "bio" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="name" tabindex="-1" aria-labelledby="nameLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <h2>Edit </h2>
+        <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Your first name",
+                        input_html: { autocomplete: "first_name" } %>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        label: false,
+                        placeholder: "Your last name",
+                        input_html: { autocomplete: "last_name" } %>
+          <div class="form-actions">
+            <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
           </div>
         <% end %>
         <%= link_to "Back", :back %>

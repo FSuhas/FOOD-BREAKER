@@ -11,13 +11,15 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    update
   end
 
   def update
-    if @user.update(params_create)
+
+    if current_user.update(params_create)
+
       redirect_to profile_path
     else
+
       render profile_path, status: :unprocessable_entity
     end
   end
@@ -29,6 +31,6 @@ class ProfilesController < ApplicationController
   end
 
   def params_create
-    params.require(:user).permit(:id, :email, :first_name, :last_name, :avatar, :address, :bio )
+    params.require('/profile').permit(:id, :email, :first_name, :last_name, :avatar, :address, :bio, :photo )
   end
 end
