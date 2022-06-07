@@ -1,9 +1,9 @@
 <div class="container" id="cont-place">
   <div class="head">
     <button type="button" data-bs-toggle="modal" data-bs-target="#avatar">
-      <%= cl_image_tag current_user.photo.key, crop: :thumb, gravity: :face, class: 'avatar', id: 'img-place' %>
+      <%= cl_image_tag current_user.photo.key, crop: :fill, gravity: :face, class: 'avatar', id: 'img-place' %>
     </button>
-    <div class="right"><h2><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2>
+    <div class="right"><h2><%= @user.nickname.capitalize %></h2>
       <button type="button" data-bs-toggle="modal" data-bs-target="#name">
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
@@ -80,18 +80,12 @@
         <h2>Edit </h2>
         <%= simple_form_for(profile_path, data: {turbo_method: 'post'}) do |f| %>
           <div class="form-inputs">
-            <%= f.input :first_name,
+            <%= f.input :nickname,
                         required: true,
                         autofocus: true,
                         label: false,
-                        placeholder: "Your first name",
-                        input_html: { autocomplete: "first_name" } %>
-            <%= f.input :last_name,
-                        required: true,
-                        autofocus: true,
-                        label: false,
-                        placeholder: "Your last name",
-                        input_html: { autocomplete: "last_name" } %>
+                        placeholder: "Your nickname",
+                        input_html: { autocomplete: "nickname" } %>
           <div class="form-actions">
             <%= f.button :submit, "Update", data: { turbo_method: "post" }, class: 'btn btn-primary' %>
           </div>

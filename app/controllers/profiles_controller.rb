@@ -31,6 +31,6 @@ class ProfilesController < ApplicationController
   end
 
   def params_create
-    params.require('/profile').permit(:id, :email, :first_name, :last_name, :avatar, :address, :bio, :photo )
+    params.require('/profile').permit(:id, :email, :nickname, :avatar, :address, :bio, :photo )
   end
 end

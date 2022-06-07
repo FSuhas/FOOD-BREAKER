@@ -6,9 +6,10 @@ require 'date'
 puts "------------------------------"
 puts "----------Start seed----------"
 puts "------------------------------"
-sleep(1)
 
 puts "#destroy_all start ..."
+
+sleep(1)
 
 NetworksUser.destroy_all
 
@@ -20,6 +21,8 @@ Event.destroy_all
 
 User.destroy_all
 
+sleep(1)
+
 puts "#destroy_all finish !"
 
 sleep(1)
@@ -28,8 +31,7 @@ puts "User seed start..."
 
 pierre = User.new(email: 'pierre@gmail.com',
   password: '12345678',
-  first_name: "pierre",
-  last_name: "jean",
+  nickname: "pierre",
   avatar: '',
   address: "17 boulevard clemenceau 35000 Rennes",
   bio: "Take a gourmet break with a brunch of Brittany ! We can have a chat before over food as French cheese, French charcuterie, bread, pancakes and cider!! I will be delighted to welcome you in my restored farmhouse from the 18th century with an old bread oven and a lovely garden.")
@@ -39,8 +41,7 @@ pierre.save!
 
 sarah = User.new(email: 'sarah@gmail.com',
   password: '12345678',
-  first_name: "sarah",
-  last_name: "du desert",
+  nickname: "sarah",
   avatar: '',
   address: "35 rue kleber 33200 Bordeaux",
   bio: "Being Portuguesee and located in Bordeaux for more than 10 years, I want to share the very best of Portugal, the Portuguese and Portuguese traditional gastronomy and our own special sweets. During dinners or classes we chat about food, tips of my city in a cozy and relaxed environment.")
@@ -50,8 +51,7 @@ sarah.save!
 
 nicolas = User.new(email: 'nicolas@gmail.com',
   password: '12345678',
-  first_name: "nicolas",
-  last_name: "petit",
+  nickname: "nicolas",
   avatar: '',
   address: "4 rue des basques 64200 Bayonne",
   bio: "Hi ! I'm Nicolas. I love traveling, design, nature, photos, art and cooking of course. I would like to welcome you in my house in the South of France not far from Biarritz. My daughters, my wife and my cats would be happy to welcome you!")
@@ -61,8 +61,7 @@ nicolas.save!
 
 louis = User.new(email: 'louis@gmail.com',
   password: '12345678',
-  first_name: "louis",
-  last_name: "lafonte",
+  nickname: "louis",
   avatar: '',
   address: "60 rue de paradis 75010 Paris",
   bio: "Parisian journalist and producer, I've been travelling around the World since 1996 and living in France's capital since 2000. I enjoy sharing travel experiences, Paris tips (and food !) with travellers and locals. Let's do it around my table!")
@@ -72,8 +71,7 @@ louis.save!
 
 juliette = User.new(email: 'juliette@gmail.com',
   password: '12345678',
-  first_name: "juliette",
-  last_name: "Jetaime",
+  nickname: "juliette",
   avatar: '',
   address: "6 rue de la jussienne 75002 Paris",
   bio: "I'm a Parisian born and raised. I'm a food and history lover. I'm a glutton for cheese, buttery saucy meals, sugary treats and chocolate (but always good quality)! Let's share my passions together!")
@@ -95,7 +93,7 @@ pierre_event = Event.new(title: "frendly Parisian Dinner",
   language: "French",
   capacity: 10, user: pierre)
 
-pierre_event.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "pierreEvent.png", content_type: "image/png")
+pierre_event.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent.png", content_type: "image/png")
 pierre_event.save!
 
 pierre_event_two = Event.new(title: "Brunch on the beach",
@@ -107,7 +105,7 @@ pierre_event_two = Event.new(title: "Brunch on the beach",
   capacity: 8,
   user: pierre)
 
-pierre_event_two.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "pierreEvent2.png", content_type: "image/png")
+pierre_event_two.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent2.png", content_type: "image/png")
 pierre_event_two.save!
 
 sarah_event = Event.new(title: "Learn Portuguese Food",
@@ -119,7 +117,7 @@ sarah_event = Event.new(title: "Learn Portuguese Food",
   capacity: 5,
   user: sarah)
 
-sarah_event.photos.attach(io: URI.open("https://source.unsplash.com/random"),
+sarah_event.photos.attach(io: URI.open("https://source.unsplash.com/random?food"),
 filename: "sarahEvent.png",
 content_type: "image/png")
 
@@ -134,7 +132,7 @@ nicolas_event = Event.new(title: "Traditional Dim Sum Cooking Class",
   capacity: 6,
   user: nicolas)
 
-nicolas_event.photos.attach(io: URI.open("https://source.unsplash.com/random"), filename: "nicolas_event.png", content_type: "image/png")
+nicolas_event.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "nicolas_event.png", content_type: "image/png")
 nicolas_event.save!
 
 puts "Event seed finish !"
@@ -169,6 +167,7 @@ puts "Networks User seed start..."
 NetworksUser.create(user_id: juliette.id, network_id: good_food.id)
 NetworksUser.create(user_id: nicolas.id, network_id: good_food.id)
 NetworksUser.create(user_id: louis.id, network_id: good_food.id)
+NetworksUser.create(user_id: sarah.id, network_id: good_food.id)
 NetworksUser.create(user_id: juliette.id, network_id: pizza.id)
 NetworksUser.create(user_id: pierre.id, network_id: pizza.id)
 NetworksUser.create(user_id: nicolas.id, network_id: company.id)

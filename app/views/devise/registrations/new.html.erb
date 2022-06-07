@@ -8,18 +8,12 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
-            <%= f.input :first_name,
+            <%= f.input :nickname,
                         required: true,
                         autofocus: true,
                         label: false,
                         placeholder: "Your first name",
-                        input_html: { autocomplete: "first_name" } %>
-            <%= f.input :last_name,
-                        required: true,
-                        autofocus: true,
-                        label: false,
-                        placeholder: "Your last name",
-                        input_html: { autocomplete: "last_name" } %>
+                        input_html: { autocomplete: "nickname" } %>
             <%= f.input :photo,
                         as: :file,
                         required: true,
