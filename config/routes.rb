@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:destroy]
   resources :networks, except: [:new, :index]
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
   get '/dashboard', to: 'dashboards#dashboard'
   get '/profile', to: 'profiles#profile'
   post '/profile', to: 'profiles#update'

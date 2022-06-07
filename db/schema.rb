@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_07_082936) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_07_091815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_082936) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "experience"
@@ -68,6 +74,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_082936) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "networks", force: :cascade do |t|
@@ -110,6 +126,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_082936) do
   add_foreign_key "bookings", "events"
   add_foreign_key "bookings", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "networks", "users"
   add_foreign_key "networks_users", "networks"
   add_foreign_key "networks_users", "users"
