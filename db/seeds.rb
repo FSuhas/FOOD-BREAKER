@@ -11,6 +11,8 @@ puts "#destroy_all start ..."
 
 sleep(1)
 
+Chatroom.destroy_all
+
 NetworksUser.destroy_all
 
 Network.destroy_all
@@ -176,6 +178,12 @@ NetworksUser.create(user_id: louis.id, network_id: company.id)
 puts "Networks User seed finish..."
 
 sleep(1)
+
+puts "Chatroom seed start..."
+
+Chatroom.create(name: 'Chatroom')
+
+puts "Chatroom seed finish..."
 
 puts "------------------------------"
 puts "----------All Good !----------"
