@@ -26,15 +26,6 @@
   }
 }
 
-input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-  border-radius: 10px;
-  -webkit-appearance: none;
-}
 
 .tab input:focus{
   border:1px solid #6a1b9a !important;
@@ -46,10 +37,17 @@ input.invalid {
 }
 
 .tab {
-  display: none
+  display: none;
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    -webkit-appearance: none;
+  }
 }
-
-
 
 button:hover {
   opacity: 0.8
