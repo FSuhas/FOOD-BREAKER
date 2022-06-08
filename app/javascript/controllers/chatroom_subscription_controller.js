@@ -13,7 +13,6 @@ export default class extends Controller {
           this.messagesTarget.insertAdjacentHTML("beforeend", data.html)
         } else {
           this.messagesTarget.insertAdjacentHTML("beforeend", data.html)
-          console.log(Array.from(this.messagesTarget.children))
           const elements = Array.from(this.messagesTarget.children)
           const element = elements[elements.length -1]
           element.classList.remove('msg-info-sender')
