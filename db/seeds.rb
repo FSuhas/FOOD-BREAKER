@@ -31,7 +31,6 @@ pierre = User.new(email: 'pierre@gmail.com',
   password: '12345678',
   nickname: "pierre",
   avatar: '',
-  address: "17 boulevard clemenceau 35000 Rennes",
   bio: "Take a gourmet break with a brunch of Brittany ! We can have a chat before over food as French cheese, French charcuterie, bread, pancakes and cider!! I will be delighted to welcome you in my restored farmhouse from the 18th century with an old bread oven and a lovely garden.")
 
 pierre.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man"), filename: "pierre.png", content_type: "image/png")
@@ -41,7 +40,6 @@ sarah = User.new(email: 'sarah@gmail.com',
   password: '12345678',
   nickname: "sarah",
   avatar: '',
-  address: "35 rue kleber 33200 Bordeaux",
   bio: "Being Portuguesee and located in Bordeaux for more than 10 years, I want to share the very best of Portugal, the Portuguese and Portuguese traditional gastronomy and our own special sweets. During dinners or classes we chat about food, tips of my city in a cozy and relaxed environment.")
 
 sarah.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?woman"), filename: "sarahh.png", content_type: "image/png")
@@ -51,7 +49,6 @@ nicolas = User.new(email: 'nicolas@gmail.com',
   password: '12345678',
   nickname: "nicolas",
   avatar: '',
-  address: "4 rue des basques 64200 Bayonne",
   bio: "Hi ! I'm Nicolas. I love traveling, design, nature, photos, art and cooking of course. I would like to welcome you in my house in the South of France not far from Biarritz. My daughters, my wife and my cats would be happy to welcome you!")
 
 nicolas.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man"), filename: "nicolas.png", content_type: "image/png")
@@ -61,7 +58,6 @@ louis = User.new(email: 'louis@gmail.com',
   password: '12345678',
   nickname: "louis",
   avatar: '',
-  address: "60 rue de paradis 75010 Paris",
   bio: "Parisian journalist and producer, I've been travelling around the World since 1996 and living in France's capital since 2000. I enjoy sharing travel experiences, Paris tips (and food !) with travellers and locals. Let's do it around my table!")
 
 louis.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?man"), filename: "louis.png", content_type: "image/png")
@@ -71,7 +67,6 @@ juliette = User.new(email: 'juliette@gmail.com',
   password: '12345678',
   nickname: "juliette",
   avatar: '',
-  address: "6 rue de la jussienne 75002 Paris",
   bio: "I'm a Parisian born and raised. I'm a food and history lover. I'm a glutton for cheese, buttery saucy meals, sugary treats and chocolate (but always good quality)! Let's share my passions together!")
 
 juliette.photo.attach(io: URI.open("https://source.unsplash.com/random?profile?woman"), filename: "juliette.png", content_type: "image/png")
@@ -87,7 +82,8 @@ pierre_event = Event.new(title: "frendly Parisian Dinner",
   description: "Dinner with friends around French cheeses and wines",
   date: Date.new(2022,6,20),
   language: "French",
-  capacity: 10, user: pierre)
+  capacity: 10,
+  user: pierre)
 
 pierre_event.photos.attach(io: URI.open("https://source.unsplash.com/random?food"), filename: "pierreEvent.png", content_type: "image/png")
 pierre_event.save!
@@ -167,7 +163,7 @@ puts "Networks User seed finish..."
 
 puts "Chatroom seed start..."
 
-Chatroom.create(name: 'Chatroom')
+Chatroom.create(name: 'Chatroom', event_id: pierre_event.id)
 
 puts "Chatroom seed finish..."
 

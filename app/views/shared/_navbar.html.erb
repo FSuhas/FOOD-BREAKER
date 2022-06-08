@@ -8,7 +8,7 @@
       </li>
 
       <li >
-        <%= link_to chatroom_path(Chatroom.first, anchor: "message-#{Chatroom.first.messages.last.id}"), data: {turbo: false} do %>
+        <%= link_to chatroom_path(Chatroom.first, anchor: "message-#{Chatroom.first.messages.last&.id}"), data: {turbo: false} do %>
           <%= image_tag 'dashboard.png', width: 40, height: 40 %>
         <% end %>
       </li>

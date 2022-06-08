@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  has_many :chatrooms
 
   EXPERIENCE = ["Dinner", "Cooking Class", "Food Tour", "Brunch"]
   LANGUAGE = ["French", "English", "Spanish", "Portuguese"]
