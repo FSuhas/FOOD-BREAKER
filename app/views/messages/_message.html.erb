@@ -1,7 +1,8 @@
-<div class="skin-msg" id="message-<%= message.id %>">
-  <small>
-    <strong><%= cl_image_tag message.user.photo.key, widht: 30, height: 30, id: 'avatar-msg', class: 'avatar' %> <%= message.user.nickname %></strong>
-    <small><i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i></small>
-  </small>
-  <p><%= message.content %></p>
-</div>
+  <div class="skin-msg msg-info-<%= message.user == current_user ? 'sender' : 'receiver' %>" id="message-<%= message.id %>">
+    <small>
+      <%= cl_image_tag message.user.photo.key, widht: 30, height: 30, id: 'avatar-msg', class: 'avatar' %>
+      <strong> <%= message.user.nickname %></strong>
+      <small><i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i></small>
+    </small>
+    <p><%= message.content %></p>
+  </div>
