@@ -9,8 +9,7 @@ class BookingsController < ApplicationController
       render 'events/show', status: :unprocessable_entity
     elsif @booking.save
       redirect_to event_path(@event), notice: "You made a reservation for #{@booking.nb_guest} people"
-    elsif
-      render 'events/show', status: :unprocessable_entity
+    elsif render 'events/show', status: :unprocessable_entity
     end
   end
 

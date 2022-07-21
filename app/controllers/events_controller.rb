@@ -12,7 +12,6 @@ class EventsController < ApplicationController
       @events = Event.all
     end
 
-    @event = Event.new
     @booking = Booking.new
     @event = Event.all
   end
@@ -36,10 +35,16 @@ class EventsController < ApplicationController
     @event = Event.new(params_create)
     @event.user = current_user
     if @event.save
-      redirect_to dashboard_path
+      redirect_to profile_path
     else
       render 'events/new', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to profile_path
   end
 
   private

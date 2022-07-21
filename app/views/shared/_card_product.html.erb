@@ -16,6 +16,7 @@
           </div>
           <div class="card-product-infos">
             <h2><%= e.title %></h2>
+            <%= link_to 'X', event_path(e), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, id: 'Oo'%>
             <% e.bookings.each do |b| %>
               <% if b.confirmation.nil? %>
                 <%= b.confirmation %>
