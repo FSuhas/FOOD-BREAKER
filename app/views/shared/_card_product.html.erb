@@ -23,7 +23,7 @@
                 <div class="slot">
                   <p>Guest: <%= b.nb_guest %></p>
                   <div class="btn-card">
-                    <%= link_to "Decline", booking_path(b), data: { turbo_method: "delete" }, class: 'btn btn-secondary' %>
+                    <%= link_to "Decline", booking_path(b), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-secondary' %>
                     <%= link_to "Accept", event_booking_path(e, b), data: { turbo_method: "patch" }, class: 'btn btn-primary' %>
                   </div>
                 </div>
